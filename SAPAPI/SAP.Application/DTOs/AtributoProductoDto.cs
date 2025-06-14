@@ -2,9 +2,9 @@ using System;
 
 namespace SAP.Application.DTOs
 {
-    public class ProductoAtributoValorDto
+    public class AtributoProductoDto
     {
-        public int ProductoAtributoId { get; set; }
+        public int AtributoProductoId { get; set; }
         public int ProductoId { get; set; }
         public int AtributoId { get; set; }
         public string Valor { get; set; }
@@ -17,20 +17,20 @@ namespace SAP.Application.DTOs
         public string TipoAtributo { get; set; }
     }
 
-    public class CreateProductoAtributoValorDto
+    public class CreateAtributoProductoDto
     {
         public int ProductoId { get; set; }
         public int AtributoId { get; set; }
         public string Valor { get; set; }
     }
 
-    public class UpdateProductoAtributoValorDto
+    public class UpdateAtributoProductoDto
     {
-        public int ProductoAtributoId { get; set; }
+        public int AtributoProductoId { get; set; }
         public string Valor { get; set; }
     }
 
-    public class ProductoAtributoValorDetalleDto : ProductoAtributoValorDto
+    public class AtributoProductoDetalleDto : AtributoProductoDto
     {
         public ProductoDto Producto { get; set; }
         public AtributoDto Atributo { get; set; }

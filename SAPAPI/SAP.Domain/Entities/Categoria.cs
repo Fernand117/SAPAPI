@@ -10,8 +10,11 @@ namespace SAP.Domain.Entities
         public string Descripcion { get; set; }
         public bool Activa { get; set; }
         public DateTime FechaCreacion { get; set; }
+        public int? CategoriaPadreId { get; set; }
 
         // Relaciones
-        public ICollection<Producto> Productos { get; set; }
+        public virtual Categoria CategoriaPadre { get; set; }
+        public virtual ICollection<Categoria> SubCategorias { get; set; }
+        public virtual ICollection<Producto> Productos { get; set; }
     }
 } 

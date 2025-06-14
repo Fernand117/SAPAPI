@@ -70,11 +70,11 @@ namespace SAP.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<Producto> AddAsync(Producto producto)
+        public override async Task<Producto> AddAsync(Producto entity)
         {
-            await _dbSet.AddAsync(producto);
+            await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return producto;
+            return entity;
         }
 
         public async Task<bool> UpdateAsync(Producto producto)

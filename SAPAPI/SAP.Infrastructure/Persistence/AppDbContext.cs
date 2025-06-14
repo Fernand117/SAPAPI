@@ -157,7 +157,9 @@ namespace SAP.Infrastructure.Persistence
             {
                 entity.HasKey(e => e.AtributoId);
                 entity.Property(e => e.Nombre).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Valor).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.Descripcion).HasMaxLength(500);
+                entity.Property(e => e.Tipo).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.FechaCreacion).IsRequired();
             });
 
             // Configuración de ProductoAtributo

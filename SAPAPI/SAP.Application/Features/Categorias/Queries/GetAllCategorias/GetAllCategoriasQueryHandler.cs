@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -22,7 +23,22 @@ namespace SAP.Application.Features.Categorias.Queries.GetAllCategorias
         public async Task<IEnumerable<CategoriaDto>> Handle(GetAllCategoriasQuery request, CancellationToken cancellationToken)
         {
             var categorias = await _categoriaRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<CategoriaDto>>(categorias);
+            
+            if (request.SoloActivas)
+                categorias = categorias.Where(c => c.Activa);
+
+            var categoriasDto = _mapper.Map<IEnumerable<CategoriaDto>>(categorias);
+
+            if (request.IncluirSubCategorias)
+            {
+                foreach (var categoria in categoriasDto)
+                {
+                    var subCategorias = await _categoriaRepository.GetSubCategoriasAsync(categoria.CategoriaId);
+                    categoria.SubCategorias = _mapper.Map<ICollection<CategoriaDto>>(subCategorias);
+                }
+            }
+
+            return categoriasDto;
         }
     }
 } 

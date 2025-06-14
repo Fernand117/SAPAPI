@@ -11,11 +11,11 @@ namespace SAP.Infrastructure.Repositories
     {
         public ClienteRepository(DbContext context) : base(context) { }
 
-        public async Task<Cliente> AddAsync(Cliente cliente)
+        public override async Task<Cliente> AddAsync(Cliente entity)
         {
-            await _dbSet.AddAsync(cliente);
+            await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return cliente;
+            return entity;
         }
 
         public async Task<bool> UpdateAsync(Cliente cliente)
@@ -30,14 +30,16 @@ namespace SAP.Infrastructure.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<Cliente> GetByIdAsync(int clienteId)
+        public override async Task<Cliente> GetByIdAsync(int id)
         {
-            return await _dbSet.FirstOrDefaultAsync(c => c.ClienteId == clienteId);
+            return await _dbSet
+                .FirstOrDefaultAsync(c => c.ClienteId == id);
         }
 
-        public async Task<IEnumerable<Cliente>> GetAllAsync()
+        public override async Task<IEnumerable<Cliente>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Cliente>> GetByNombreAsync(string nombre)

@@ -84,11 +84,11 @@ namespace SAP.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Empleado> AddAsync(Empleado empleado)
+        public override async Task<Empleado> AddAsync(Empleado entity)
         {
-            await _dbSet.AddAsync(empleado);
+            await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return empleado;
+            return entity;
         }
     }
 } 

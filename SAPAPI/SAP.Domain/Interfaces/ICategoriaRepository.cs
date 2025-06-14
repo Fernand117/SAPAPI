@@ -4,13 +4,11 @@ using SAP.Domain.Entities;
 
 namespace SAP.Domain.Interfaces
 {
-    public interface ICategoriaRepository : IRepository<Categoria>
+    public interface ICategoriaRepository : IGenericRepository<Categoria>
     {
-        Task<Categoria> AddAsync(Categoria categoria);
-        Task<bool> UpdateAsync(Categoria categoria);
-        Task<bool> DeleteAsync(Categoria categoria);
-        Task<Categoria> GetByIdAsync(int categoriaId);
-        Task<IEnumerable<Categoria>> GetAllAsync();
-        Task<IEnumerable<Categoria>> GetCategoriasActivasAsync();
+        Task<IEnumerable<Categoria>> GetSubCategoriasAsync(int categoriaPadreId);
+        Task<IEnumerable<Producto>> GetProductosAsync(int categoriaId);
+        Task<IEnumerable<Categoria>> GetCategoriasPadreAsync();
+        Task<IEnumerable<Categoria>> GetByNombreAsync(string nombre);
     }
 } 

@@ -11,11 +11,11 @@ namespace SAP.Infrastructure.Repositories
     {
         public SucursalRepository(DbContext context) : base(context) { }
 
-        public async Task<Sucursal> AddAsync(Sucursal sucursal)
+        public override async Task<Sucursal> AddAsync(Sucursal entity)
         {
-            await _dbSet.AddAsync(sucursal);
+            await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return sucursal;
+            return entity;
         }
 
         public async Task<bool> UpdateAsync(Sucursal sucursal)
@@ -30,14 +30,16 @@ namespace SAP.Infrastructure.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<Sucursal> GetByIdAsync(int sucursalId)
+        public override async Task<Sucursal> GetByIdAsync(int id)
         {
-            return await _dbSet.FirstOrDefaultAsync(s => s.SucursalId == sucursalId);
+            return await _dbSet
+                .FirstOrDefaultAsync(s => s.SucursalId == id);
         }
 
-        public async Task<IEnumerable<Sucursal>> GetAllAsync()
+        public override async Task<IEnumerable<Sucursal>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Sucursal>> GetByNombreAsync(string nombre)
