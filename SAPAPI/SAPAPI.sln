@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.API", "SAP.API\SAP.API.csproj", "{596E0EEB-E3A3-465E-825C-073733093430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Domain", "SAP.Domain\SAP.Domain.csproj", "{C09D495E-95EA-493B-9F5D-114A7E2EE3BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Application", "SAP.Application\SAP.Application.csproj", "{60688119-532F-4C0D-8D69-1312FCDCB7EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Infrastructure", "SAP.Infrastructure\SAP.Infrastructure.csproj", "{4C3AC7B1-40FC-4FFC-B6E6-77243111572A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{596E0EEB-E3A3-465E-825C-073733093430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596E0EEB-E3A3-465E-825C-073733093430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596E0EEB-E3A3-465E-825C-073733093430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596E0EEB-E3A3-465E-825C-073733093430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C09D495E-95EA-493B-9F5D-114A7E2EE3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C09D495E-95EA-493B-9F5D-114A7E2EE3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C09D495E-95EA-493B-9F5D-114A7E2EE3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C09D495E-95EA-493B-9F5D-114A7E2EE3BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60688119-532F-4C0D-8D69-1312FCDCB7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60688119-532F-4C0D-8D69-1312FCDCB7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60688119-532F-4C0D-8D69-1312FCDCB7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60688119-532F-4C0D-8D69-1312FCDCB7EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3AC7B1-40FC-4FFC-B6E6-77243111572A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3AC7B1-40FC-4FFC-B6E6-77243111572A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3AC7B1-40FC-4FFC-B6E6-77243111572A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3AC7B1-40FC-4FFC-B6E6-77243111572A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
