@@ -29,7 +29,6 @@ namespace SAP.Infrastructure.Data
             modelBuilder.Entity<Asistencia>(entity =>
             {
                 entity.HasKey(e => e.AsistenciaId);
-                entity.Property(e => e.Tipo).IsRequired();
                 entity.Property(e => e.Estado).IsRequired();
                 entity.HasOne(e => e.Empleado)
                     .WithMany()

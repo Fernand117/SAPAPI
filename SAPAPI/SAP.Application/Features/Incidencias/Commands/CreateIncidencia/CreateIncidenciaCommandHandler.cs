@@ -1,7 +1,7 @@
 using AutoMapper;
 using MediatR;
 using SAP.Application.DTOs;
-using SAP.Application.Interfaces;
+using SAP.Domain.Interfaces;
 using SAP.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;

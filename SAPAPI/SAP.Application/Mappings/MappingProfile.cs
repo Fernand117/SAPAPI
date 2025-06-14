@@ -35,34 +35,29 @@ namespace SAP.Application.Mappings
             CreateMap<UpdateBitacoraDto, Bitacora>();
 
             // Mapeos para PermisoSalida
-            CreateMap<PermisoSalida, PermisoSalidaDto>()
-                .ForMember(dest => dest.NombreEmpleado, opt => opt.MapFrom(src => src.Empleado.Nombre));
+            CreateMap<PermisoSalida, PermisoSalidaDto>();
             CreateMap<CreatePermisoSalidaDto, PermisoSalida>();
             CreateMap<UpdatePermisoSalidaDto, PermisoSalida>();
 
             // Mapeos para Incidencia
-            CreateMap<Incidencia, IncidenciaDto>()
-                .ForMember(dest => dest.NombreEmpleado, opt => opt.MapFrom(src => src.Empleado.Nombre));
+            CreateMap<Incidencia, IncidenciaDto>();
             CreateMap<CreateIncidenciaDto, Incidencia>();
             CreateMap<UpdateIncidenciaDto, Incidencia>();
 
             // Mapeos para Nomina
-            CreateMap<Nomina, NominaDto>()
-                .ForMember(dest => dest.NombreEmpleado, opt => opt.MapFrom(src => src.Empleado.Nombre));
+            CreateMap<Nomina, NominaDto>();
             CreateMap<CreateNominaDto, Nomina>();
             CreateMap<UpdateNominaDto, Nomina>();
 
             // Mapeos para UnidadMovil
-            CreateMap<UnidadMovil, UnidadMovilDto>()
-                .ForMember(dest => dest.NombreSucursal, opt => opt.MapFrom(src => src.Sucursal.Nombre));
+            CreateMap<UnidadMovil, UnidadMovilDto>();
             CreateMap<CreateUnidadMovilDto, UnidadMovil>();
             CreateMap<UpdateUnidadMovilDto, UnidadMovil>();
 
             // Mapeos para UsuarioUnidad
             CreateMap<UsuarioUnidad, UsuarioUnidadDto>()
                 .ForMember(dest => dest.NombreUsuario, opt => opt.MapFrom(src => src.Usuario.Username))
-                .ForMember(dest => dest.PlacaUnidad, opt => opt.MapFrom(src => src.UnidadMovil.Placa))
-                .ForMember(dest => dest.NombreSucursal, opt => opt.MapFrom(src => src.Sucursal.Nombre));
+                .ForMember(dest => dest.PlacaUnidad, opt => opt.MapFrom(src => src.UnidadMovil.Placa));
             CreateMap<CreateUsuarioUnidadDto, UsuarioUnidad>();
             CreateMap<UpdateUsuarioUnidadDto, UsuarioUnidad>();
 
@@ -74,8 +69,7 @@ namespace SAP.Application.Mappings
             CreateMap<UpdateProductoAtributoValorDto, ProductoAtributoValor>();
 
             // Mapeos para CategoriaProducto
-            CreateMap<CategoriaProducto, CategoriaProductoDto>()
-                .ForMember(dest => dest.NombreCategoriaPadre, opt => opt.MapFrom(src => src.CategoriaPadre.Nombre));
+            CreateMap<CategoriaProducto, CategoriaProductoDto>();
             CreateMap<CreateCategoriaProductoDto, CategoriaProducto>();
             CreateMap<UpdateCategoriaProductoDto, CategoriaProducto>();
 

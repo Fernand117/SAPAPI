@@ -4,10 +4,10 @@ namespace SAP.Domain.Entities
 {
     public class Nomina
     {
-        public int NominaId { get; set; }
+        public int Id { get; set; }
         public int EmpleadoId { get; set; }
-        public DateTime PeriodoInicio { get; set; }
-        public DateTime PeriodoFin { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
         public decimal SalarioBase { get; set; }
         public decimal Bonificaciones { get; set; }
         public decimal Deducciones { get; set; }
@@ -16,6 +16,6 @@ namespace SAP.Domain.Entities
         public string Estado { get; set; }
 
         // Relaciones
-        public Empleado Empleado { get; set; }
+        public virtual Empleado Empleado { get; set; } = null!;
     }
 } 

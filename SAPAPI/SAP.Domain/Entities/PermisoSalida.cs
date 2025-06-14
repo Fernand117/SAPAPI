@@ -4,15 +4,14 @@ namespace SAP.Domain.Entities
 {
     public class PermisoSalida
     {
-        public int PermisoSalidaId { get; set; }
+        public int Id { get; set; }
         public int EmpleadoId { get; set; }
-        public DateTime Fecha { get; set; }
-        public DateTime HoraInicio { get; set; }
-        public DateTime HoraFin { get; set; }
-        public string Motivo { get; set; }
-        public string Estado { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
+        public string Motivo { get; set; } = string.Empty;
+        public string Estado { get; set; } = string.Empty;
 
         // Relaciones
-        public Empleado Empleado { get; set; }
+        public virtual Empleado Empleado { get; set; } = null!;
     }
 } 
