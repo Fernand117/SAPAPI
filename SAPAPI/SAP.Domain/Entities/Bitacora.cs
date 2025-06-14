@@ -8,9 +8,9 @@ namespace SAP.Domain.Entities
         public int UsuarioId { get; set; }
         public DateTime Fecha { get; set; }
         public string Accion { get; set; }
-        public string Descripcion { get; set; }
-        public string Detalle { get; set; }
-        public string IpAddress { get; set; }
+        public string Tabla { get; set; }
+        public string RegistroId { get; set; }
+        public string Detalles { get; set; }
 
         // Relaciones
         public Usuario Usuario { get; set; }

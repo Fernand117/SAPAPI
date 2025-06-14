@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SAP.Domain.Interfaces
 {
@@ -10,5 +12,6 @@ namespace SAP.Domain.Interfaces
         Task<T> AddAsync(T entity);
         Task<bool> UpdateAsync(T entity);
         Task<bool> DeleteAsync(T entity);
+        IQueryable<T> Query();
     }
 } 

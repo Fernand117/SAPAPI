@@ -46,23 +46,4 @@ namespace SAP.Application.DTOs
         public ICollection<ProductoAtributoValorDto>? Atributos { get; set; }
         public ICollection<InventarioDto>? Inventario { get; set; }
     }
-
-    public class ProductoAtributoDto
-    {
-        public int AtributoId { get; set; }
-        public required string Nombre { get; set; }
-        public required string Valor { get; set; }
-    }
-
-    public class CreateProductoAtributoDto
-    {
-        public int AtributoId { get; set; }
-        public required string Valor { get; set; }
-    }
-
-    public class UpdateProductoAtributoDto
-    {
-        public int AtributoId { get; set; }
-        public required string Valor { get; set; }
-    }
 } 

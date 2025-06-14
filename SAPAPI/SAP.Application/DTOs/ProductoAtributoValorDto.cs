@@ -4,17 +4,11 @@ namespace SAP.Application.DTOs
 {
     public class ProductoAtributoValorDto
     {
-        public int ProductoAtributoId { get; set; }
         public int ProductoId { get; set; }
         public int AtributoId { get; set; }
         public string Valor { get; set; }
-        public DateTime FechaCreacion { get; set; }
-
-        // Propiedades de navegación
         public string NombreProducto { get; set; }
-        public string CodigoProducto { get; set; }
         public string NombreAtributo { get; set; }
-        public string TipoAtributo { get; set; }
     }
 
     public class CreateProductoAtributoValorDto
@@ -26,7 +20,8 @@ namespace SAP.Application.DTOs
 
     public class UpdateProductoAtributoValorDto
     {
-        public int ProductoAtributoId { get; set; }
+        public int ProductoId { get; set; }
+        public int AtributoId { get; set; }
         public string Valor { get; set; }
     }
 

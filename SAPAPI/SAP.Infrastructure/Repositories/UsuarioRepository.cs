@@ -9,7 +9,7 @@ namespace SAP.Infrastructure.Repositories
 {
     public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
-        public UsuarioRepository(DbContext context) : base(context)
+        public UsuarioRepository(ApplicationDbContext context) : base(context)
         {
         }
 

@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using SAP.Application.Interfaces;
+using SAP.Domain.Interfaces;
 
 namespace SAP.Application.Features.Inventarios.Commands.DeleteInventario
 {

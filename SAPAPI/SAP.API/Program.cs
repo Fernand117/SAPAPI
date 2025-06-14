@@ -37,6 +37,8 @@ builder.Services.AddScoped<IInventarioRepository, InventarioRepository>();
 builder.Services.AddScoped<IProductoAtributoRepository, ProductoAtributoRepository>();
 builder.Services.AddScoped<IDetalleVentaRepository, DetalleVentaRepository>();
 builder.Services.AddScoped<IAsistenciaRepository, AsistenciaRepository>();
+builder.Services.AddScoped<ISucursalRepository, SucursalRepository>();
+builder.Services.AddScoped<IInventarioVendedorRepository, InventarioVendedorRepository>();
 
 // Configurar AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -76,7 +78,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 // Aplicar migraciones automáticamente
-using (var scope = app.Services.CreateScope())
+/*using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
@@ -89,6 +91,6 @@ using (var scope = app.Services.CreateScope())
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "Ocurrió un error al aplicar las migraciones.");
     }
-}
+}*/
 
 app.Run();

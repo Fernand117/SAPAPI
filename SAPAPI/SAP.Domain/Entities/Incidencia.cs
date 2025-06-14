@@ -10,7 +10,7 @@ namespace SAP.Domain.Entities
         public string Tipo { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
-        public bool Justificada { get; set; }
+        public string Observaciones { get; set; }
 
         // Relaciones
         public Empleado Empleado { get; set; }

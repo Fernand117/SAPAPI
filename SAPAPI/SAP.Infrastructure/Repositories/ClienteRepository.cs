@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SAP.Domain.Entities;
 using SAP.Domain.Interfaces;
+using SAP.Infrastructure.Persistence;
 
 namespace SAP.Infrastructure.Repositories
 {
     public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
-        public ClienteRepository(DbContext context) : base(context) { }
+        public ClienteRepository(ApplicationDbContext context) : base(context) { }
 
         public override async Task<Cliente> AddAsync(Cliente entity)
         {

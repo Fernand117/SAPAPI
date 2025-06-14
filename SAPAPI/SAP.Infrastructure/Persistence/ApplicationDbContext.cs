@@ -21,6 +21,8 @@ namespace SAP.Infrastructure.Persistence
         public DbSet<DetalleVenta> DetalleVentas { get; set; }
         public DbSet<Atributo> Atributos { get; set; }
         public DbSet<ProductoAtributo> ProductoAtributos { get; set; }
+        public DbSet<InventarioVendedor> InventarioVendedores { get; set; }
+        public DbSet<Asistencia> Asistencias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,6 +53,30 @@ namespace SAP.Infrastructure.Persistence
                 entity.HasOne(e => e.Atributo)
                     .WithMany(a => a.ProductoAtributos)
                     .HasForeignKey(e => e.AtributoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Configuración de InventarioVendedor
+            modelBuilder.Entity<InventarioVendedor>(entity =>
+            {
+                entity.HasKey(e => e.InventarioVendedorId);
+                entity.HasOne(e => e.Producto)
+                    .WithMany()
+                    .HasForeignKey(e => e.ProductoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Empleado)
+                    .WithMany()
+                    .HasForeignKey(e => e.EmpleadoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Configuración de Asistencia
+            modelBuilder.Entity<Asistencia>(entity =>
+            {
+                entity.HasKey(e => e.AsistenciaId);
+                entity.HasOne(e => e.Empleado)
+                    .WithMany(em => em.Asistencias)
+                    .HasForeignKey(e => e.EmpleadoId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
         }

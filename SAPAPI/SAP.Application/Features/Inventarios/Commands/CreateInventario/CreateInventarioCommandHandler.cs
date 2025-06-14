@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using SAP.Application.DTOs;
-using SAP.Application.Interfaces;
+using SAP.Domain.Interfaces;
 using SAP.Domain.Entities;
 
 namespace SAP.Application.Features.Inventarios.Commands.CreateInventario

@@ -7,16 +7,16 @@ namespace SAP.Application.DTOs
         public int AtributoId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string Tipo { get; set; }
+        public string TipoDato { get; set; }
         public bool Requerido { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public bool Activo { get; set; }
     }
 
     public class CreateAtributoDto
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string Tipo { get; set; }
+        public string TipoDato { get; set; }
         public bool Requerido { get; set; }
     }
 
@@ -25,7 +25,8 @@ namespace SAP.Application.DTOs
         public int AtributoId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string Tipo { get; set; }
+        public string TipoDato { get; set; }
         public bool Requerido { get; set; }
+        public bool Activo { get; set; }
     }
 } 

@@ -10,9 +10,7 @@ namespace SAP.Application.Mappings
         {
             CreateMap<ProductoAtributo, ProductoAtributoValorDto>()
                 .ForMember(dest => dest.NombreProducto, opt => opt.MapFrom(src => src.Producto.Nombre))
-                .ForMember(dest => dest.CodigoProducto, opt => opt.MapFrom(src => src.Producto.Codigo))
-                .ForMember(dest => dest.NombreAtributo, opt => opt.MapFrom(src => src.Atributo.Nombre))
-                .ForMember(dest => dest.TipoAtributo, opt => opt.MapFrom(src => src.Atributo.Tipo));
+                .ForMember(dest => dest.NombreAtributo, opt => opt.MapFrom(src => src.Atributo.Nombre));
 
             CreateMap<ProductoAtributo, ProductoAtributoValorDetalleDto>()
                 .IncludeBase<ProductoAtributo, ProductoAtributoValorDto>();

@@ -1,0 +1,51 @@
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SAP.Application.Features.Bitacoras.Commands.CreateBitacora;
+using SAP.Application.Features.Bitacoras.Commands.UpdateBitacora;
+using SAP.Application.Features.Bitacoras.Queries.GetBitacoraById;
+using SAP.Application.Features.Bitacoras.Queries.SearchBitacoras;
+using System.Threading.Tasks;
+
+namespace SAP.API.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class BitacoraController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public BitacoraController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var query = new GetBitacoraByIdQuery { BitacoraId = id };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] SearchBitacorasQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateBitacoraCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateBitacoraCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+    }
+} 
