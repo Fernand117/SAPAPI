@@ -30,7 +30,7 @@ namespace SAP.Infrastructure.Repositories
             return await _context.DetalleVentas
                 .Include(dv => dv.Producto)
                 .Include(dv => dv.Venta)
-                .FirstOrDefaultAsync(dv => dv.DetalleVentaId == id);
+                .FirstOrDefaultAsync(dv => dv.Id == id);
         }
 
         public async Task<IEnumerable<DetalleVenta>> GetByVentaIdAsync(int ventaId)

@@ -8,7 +8,7 @@ namespace SAP.Application.Features.Permisos.Commands.CreatePermiso
 {
     public class CreatePermisoCommand : IRequest<PermisoDto>
     {
-        public CreatePermisoDto CreatePermisoDto { get; set; }
+        public CreatePermisoDto? CreatePermisoDto { get; set; }
     }
 
     public class CreatePermisoCommandHandler : IRequestHandler<CreatePermisoCommand, PermisoDto>
@@ -29,4 +29,4 @@ namespace SAP.Application.Features.Permisos.Commands.CreatePermiso
             return _mapper.Map<PermisoDto>(permiso);
         }
     }
-} 
+}

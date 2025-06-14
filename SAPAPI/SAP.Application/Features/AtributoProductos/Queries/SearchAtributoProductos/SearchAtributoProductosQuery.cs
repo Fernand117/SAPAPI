@@ -1,6 +1,7 @@
 using MediatR;
 using SAP.Application.Features.Shared;
 using SAP.Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace SAP.Application.Features.AtributoProductos.Queries.SearchAtributoProductos;
 
@@ -57,4 +58,4 @@ public class AtributoProductoDto
     public int AtributoId { get; set; }
     public int ProductoId { get; set; }
     public string Valor { get; set; } = string.Empty;
-} 
+}

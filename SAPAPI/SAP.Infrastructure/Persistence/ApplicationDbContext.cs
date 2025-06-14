@@ -31,7 +31,7 @@ namespace SAP.Infrastructure.Persistence
             // Configuración de Inventario
             modelBuilder.Entity<Inventario>(entity =>
             {
-                entity.HasKey(e => e.InventarioId);
+                entity.HasKey(e => e.Id);
                 entity.HasOne(e => e.Producto)
                     .WithMany(p => p.Inventarios)
                     .HasForeignKey(e => e.ProductoId)
@@ -59,21 +59,21 @@ namespace SAP.Infrastructure.Persistence
             // Configuración de InventarioVendedor
             modelBuilder.Entity<InventarioVendedor>(entity =>
             {
-                entity.HasKey(e => e.InventarioVendedorId);
+                entity.HasKey(e => e.Id);
                 entity.HasOne(e => e.Producto)
                     .WithMany()
                     .HasForeignKey(e => e.ProductoId)
                     .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.Empleado)
+                entity.HasOne(e => e.Vendedor)
                     .WithMany()
-                    .HasForeignKey(e => e.EmpleadoId)
+                    .HasForeignKey(e => e.VendedorId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
             // Configuración de Asistencia
             modelBuilder.Entity<Asistencia>(entity =>
             {
-                entity.HasKey(e => e.AsistenciaId);
+                entity.HasKey(e => e.Id);
                 entity.HasOne(e => e.Empleado)
                     .WithMany(em => em.Asistencias)
                     .HasForeignKey(e => e.EmpleadoId)

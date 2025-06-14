@@ -23,7 +23,7 @@ namespace SAP.Application.Features.Inventarios.Commands.CreateInventario
         {
             var inventario = _mapper.Map<Inventario>(request.Inventario);
             await _inventarioRepository.AddAsync(inventario);
-            return inventario.InventarioId;
+            return inventario.Id;
         }
     }
 } 

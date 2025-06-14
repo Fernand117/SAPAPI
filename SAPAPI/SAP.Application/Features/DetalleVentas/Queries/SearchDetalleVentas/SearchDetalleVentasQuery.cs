@@ -23,7 +23,7 @@ public class SearchDetalleVentasQueryHandler : IRequestHandler<SearchDetalleVent
 
     public async Task<Response<IEnumerable<DetalleVentaDto>>> Handle(SearchDetalleVentasQuery request, CancellationToken cancellationToken)
     {
-        var detallesVenta = await _unitOfWork.Repository<Domain.Entities.DetalleVenta>().GetAllAsync();
+        var detallesVenta = _unitOfWork.Repository<Domain.Entities.DetalleVenta>().GetAllAsync();
 
         var query = detallesVenta.AsQueryable();
 

@@ -24,7 +24,7 @@ public class SearchNominasQueryHandler : IRequestHandler<SearchNominasQuery, Res
 
     public async Task<Response<IEnumerable<NominaDto>>> Handle(SearchNominasQuery request, CancellationToken cancellationToken)
     {
-        var nominas = await _unitOfWork.Repository<Domain.Entities.Nomina>().GetAllAsync();
+        var nominas = _unitOfWork.Repository<Domain.Entities.Nomina>().GetAllAsync();
 
         var query = nominas.AsQueryable();
 
@@ -75,4 +75,4 @@ public class NominaDto
     public decimal Bonificaciones { get; set; }
     public decimal Deducciones { get; set; }
     public decimal Total { get; set; }
-} 
+}

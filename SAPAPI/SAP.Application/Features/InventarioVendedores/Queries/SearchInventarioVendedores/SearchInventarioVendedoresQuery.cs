@@ -23,7 +23,7 @@ public class SearchInventarioVendedoresQueryHandler : IRequestHandler<SearchInve
 
     public async Task<Response<IEnumerable<InventarioVendedorDto>>> Handle(SearchInventarioVendedoresQuery request, CancellationToken cancellationToken)
     {
-        var inventarioVendedores = await _unitOfWork.Repository<Domain.Entities.InventarioVendedor>().GetAllAsync();
+        var inventarioVendedores = _unitOfWork.Repository<Domain.Entities.InventarioVendedor>().GetAllAsync();
 
         var query = inventarioVendedores.AsQueryable();
 

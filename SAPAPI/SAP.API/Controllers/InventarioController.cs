@@ -22,7 +22,7 @@ namespace SAP.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetInventarioByIdQuery { InventarioId = id };
+            var query = new GetInventarioByIdQuery {  Id = id };
             var result = await _mediator.Send(query);
             return Ok(result);
         }

@@ -2,7 +2,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SAP.Application.Features.Nominas.Commands.CreateNomina;
 using SAP.Application.Features.Nominas.Commands.UpdateNomina;
-using SAP.Application.Features.Nominas.Queries.GetNominaById;
 using SAP.Application.Features.Nominas.Queries.SearchNominas;
 using System.Threading.Tasks;
 
@@ -17,14 +16,6 @@ namespace SAP.API.Controllers
         public NominaController(IMediator mediator)
         {
             _mediator = mediator;
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var query = new GetNominaByIdQuery { NominaId = id };
-            var result = await _mediator.Send(query);
-            return Ok(result);
         }
 
         [HttpGet("search")]

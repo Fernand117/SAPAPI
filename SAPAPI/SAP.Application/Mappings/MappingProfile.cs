@@ -64,7 +64,7 @@ namespace SAP.Application.Mappings
             // Mapeos para ProductoAtributoValor
             CreateMap<ProductoAtributoValor, ProductoAtributoValorDto>()
                 .ForMember(dest => dest.NombreProducto, opt => opt.MapFrom(src => src.Producto.Nombre))
-                .ForMember(dest => dest.NombreAtributo, opt => opt.MapFrom(src => src.Atributo.Nombre));
+                .ForMember(dest => dest.NombreAtributo, opt => opt.MapFrom(src => src.Atributo.Atributo));
             CreateMap<CreateProductoAtributoValorDto, ProductoAtributoValor>();
             CreateMap<UpdateProductoAtributoValorDto, ProductoAtributoValor>();
 

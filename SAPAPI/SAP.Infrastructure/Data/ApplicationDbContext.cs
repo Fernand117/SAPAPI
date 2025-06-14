@@ -28,7 +28,7 @@ namespace SAP.Infrastructure.Data
             // Configuración de Asistencia
             modelBuilder.Entity<Asistencia>(entity =>
             {
-                entity.HasKey(e => e.AsistenciaId);
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Estado).IsRequired();
                 entity.HasOne(e => e.Empleado)
                     .WithMany()

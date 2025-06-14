@@ -54,7 +54,7 @@ namespace SAP.Infrastructure.Repositories
         {
             return await _dbSet
                 .Include(p => p.InventarioVendedores)
-                .Where(p => p.InventarioVendedores.Any(iv => iv.EmpleadoId == empleadoId))
+                .Where(p => p.InventarioVendedores.Any(iv => iv.VendedorId == empleadoId))
                 .ToListAsync();
         }
 

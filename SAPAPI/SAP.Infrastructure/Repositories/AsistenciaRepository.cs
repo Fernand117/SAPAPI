@@ -29,7 +29,7 @@ namespace SAP.Infrastructure.Repositories
         {
             return await _context.Asistencias
                 .Include(a => a.Empleado)
-                .FirstOrDefaultAsync(a => a.AsistenciaId == id);
+                .FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public async Task<IEnumerable<Asistencia>> GetByEmpleadoIdAsync(int empleadoId)

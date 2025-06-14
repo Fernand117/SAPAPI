@@ -8,7 +8,7 @@ namespace SAP.Application.Features.Permisos.Commands.UpdatePermiso
 {
     public class UpdatePermisoCommand : IRequest<PermisoDto>
     {
-        public UpdatePermisoDto UpdatePermisoDto { get; set; }
+        public UpdatePermisoDto? UpdatePermisoDto { get; set; }
     }
 
     public class UpdatePermisoCommandHandler : IRequestHandler<UpdatePermisoCommand, PermisoDto>
@@ -33,4 +33,4 @@ namespace SAP.Application.Features.Permisos.Commands.UpdatePermiso
             return _mapper.Map<PermisoDto>(permiso);
         }
     }
-} 
+}

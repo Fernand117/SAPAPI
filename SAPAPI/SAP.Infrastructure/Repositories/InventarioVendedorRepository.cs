@@ -21,7 +21,7 @@ namespace SAP.Infrastructure.Repositories
         {
             return await _context.InventarioVendedores
                 .Include(iv => iv.Producto)
-                .Include(iv => iv.Empleado)
+                .Include(iv => iv.Vendedor)
                 .ToListAsync();
         }
 
@@ -29,16 +29,16 @@ namespace SAP.Infrastructure.Repositories
         {
             return await _context.InventarioVendedores
                 .Include(iv => iv.Producto)
-                .Include(iv => iv.Empleado)
-                .FirstOrDefaultAsync(iv => iv.InventarioVendedorId == id);
+                .Include(iv => iv.Vendedor)
+                .FirstOrDefaultAsync(iv => iv.VendedorId == id);
         }
 
         public async Task<IEnumerable<InventarioVendedor>> GetByEmpleadoIdAsync(int empleadoId)
         {
             return await _context.InventarioVendedores
                 .Include(iv => iv.Producto)
-                .Include(iv => iv.Empleado)
-                .Where(iv => iv.EmpleadoId == empleadoId)
+                .Include(iv => iv.Vendedor)
+                .Where(iv => iv.VendedorId == empleadoId)
                 .ToListAsync();
         }
 
@@ -46,7 +46,7 @@ namespace SAP.Infrastructure.Repositories
         {
             return await _context.InventarioVendedores
                 .Include(iv => iv.Producto)
-                .Include(iv => iv.Empleado)
+                .Include(iv => iv.Vendedor)
                 .Where(iv => iv.ProductoId == productoId)
                 .ToListAsync();
         }

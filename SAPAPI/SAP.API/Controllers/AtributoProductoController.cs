@@ -2,7 +2,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SAP.Application.Features.AtributoProductos.Commands.CreateAtributoProducto;
 using SAP.Application.Features.AtributoProductos.Commands.UpdateAtributoProducto;
-using SAP.Application.Features.AtributoProductos.Queries.GetAtributoProductoById;
 using SAP.Application.Features.AtributoProductos.Queries.SearchAtributoProductos;
 using System.Threading.Tasks;
 
@@ -17,14 +16,6 @@ namespace SAP.API.Controllers
         public AtributoProductoController(IMediator mediator)
         {
             _mediator = mediator;
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var query = new GetAtributoProductoByIdQuery { AtributoProductoId = id };
-            var result = await _mediator.Send(query);
-            return Ok(result);
         }
 
         [HttpGet("search")]

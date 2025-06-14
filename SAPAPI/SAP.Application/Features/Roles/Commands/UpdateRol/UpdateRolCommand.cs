@@ -8,7 +8,7 @@ namespace SAP.Application.Features.Roles.Commands.UpdateRol
 {
     public class UpdateRolCommand : IRequest<RolDto>
     {
-        public UpdateRolDto UpdateRolDto { get; set; }
+        public UpdateRolDto? UpdateRolDto { get; set; }
     }
 
     public class UpdateRolCommandHandler : IRequestHandler<UpdateRolCommand, RolDto>
@@ -33,4 +33,4 @@ namespace SAP.Application.Features.Roles.Commands.UpdateRol
             return _mapper.Map<RolDto>(rol);
         }
     }
-} 
+}

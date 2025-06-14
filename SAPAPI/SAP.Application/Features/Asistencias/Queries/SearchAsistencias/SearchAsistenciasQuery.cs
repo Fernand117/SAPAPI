@@ -24,7 +24,7 @@ public class SearchAsistenciasQueryHandler : IRequestHandler<SearchAsistenciasQu
 
     public async Task<Response<IEnumerable<AsistenciaDto>>> Handle(SearchAsistenciasQuery request, CancellationToken cancellationToken)
     {
-        var asistencias = await _unitOfWork.Repository<Domain.Entities.Asistencia>().GetAllAsync();
+        var asistencias = _unitOfWork.Repository<Domain.Entities.Asistencia>().GetAllAsync();
 
         var query = asistencias.AsQueryable();
 

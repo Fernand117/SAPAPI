@@ -8,7 +8,7 @@ namespace SAP.Application.Features.Permisos.Queries.SearchPermisos
 {
     public class SearchPermisosQuery : IRequest<IEnumerable<PermisoDto>>
     {
-        public string SearchTerm { get; set; }
+        public string? SearchTerm { get; set; }
     }
 
     public class SearchPermisosQueryHandler : IRequestHandler<SearchPermisosQuery, IEnumerable<PermisoDto>>
@@ -33,4 +33,4 @@ namespace SAP.Application.Features.Permisos.Queries.SearchPermisos
             return _mapper.Map<IEnumerable<PermisoDto>>(filteredPermisos);
         }
     }
-} 
+}
