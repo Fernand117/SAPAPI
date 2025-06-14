@@ -5,6 +5,6 @@ namespace SAP.Application.Features.Productos.Commands.CreateProducto
 {
     public class CreateProductoCommand : IRequest<ProductoDto>
     {
-        public CreateProductoDto Producto { get; set; }
+        public required CreateProductoDto Producto { get; set; }
     }
 } 

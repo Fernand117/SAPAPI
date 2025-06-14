@@ -7,7 +7,7 @@ using SAP.Domain.Interfaces;
 
 namespace SAP.Application.Features.Productos.Queries.GetProductoById
 {
-    public class GetProductoByIdQueryHandler : IRequestHandler<GetProductoByIdQuery, ProductoDto>
+    public class GetProductoByIdQueryHandler : IRequestHandler<GetProductoByIdQuery, ProductoDetalleDto>
     {
         private readonly IProductoRepository _productoRepository;
         private readonly IMapper _mapper;
@@ -20,10 +20,10 @@ namespace SAP.Application.Features.Productos.Queries.GetProductoById
             _mapper = mapper;
         }
 
-        public async Task<ProductoDto> Handle(GetProductoByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProductoDetalleDto> Handle(GetProductoByIdQuery request, CancellationToken cancellationToken)
         {
-            var producto = await _productoRepository.GetByIdWithAtributosAsync(request.ProductoId);
-            return producto != null ? _mapper.Map<ProductoDto>(producto) : null;
+            var producto = await _productoRepository.GetByIdAsync(request.ProductoId);
+            return _mapper.Map<ProductoDetalleDto>(producto);
         }
     }
 } 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -23,7 +24,11 @@ namespace SAP.Application.Features.Productos.Queries.GetAllProductos
 
         public async Task<IEnumerable<ProductoDto>> Handle(GetAllProductosQuery request, CancellationToken cancellationToken)
         {
-            var productos = await _productoRepository.GetAllWithAtributosAsync();
+            var productos = await _productoRepository.GetAllAsync();
+            if (request.SoloActivos)
+            {
+                productos = productos.Where(p => p.Activo);
+            }
             return _mapper.Map<IEnumerable<ProductoDto>>(productos);
         }
     }

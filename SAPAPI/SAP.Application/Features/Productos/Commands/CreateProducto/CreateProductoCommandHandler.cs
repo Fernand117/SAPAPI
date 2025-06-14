@@ -24,25 +24,8 @@ namespace SAP.Application.Features.Productos.Commands.CreateProducto
         public async Task<ProductoDto> Handle(CreateProductoCommand request, CancellationToken cancellationToken)
         {
             var producto = _mapper.Map<Producto>(request.Producto);
-            producto.Activo = true;
-
-            var productoCreado = await _productoRepository.AddAsync(producto);
-
-            // Agregar atributos si existen
-            if (request.Producto.Atributos != null)
-            {
-                foreach (var atributoDto in request.Producto.Atributos)
-                {
-                    var productoAtributo = new ProductoAtributo
-                    {
-                        ProductoId = productoCreado.ProductoId,
-                        AtributoId = atributoDto.AtributoId
-                    };
-                    await _productoRepository.AddAtributoAsync(productoAtributo, atributoDto.Valor);
-                }
-            }
-
-            return _mapper.Map<ProductoDto>(productoCreado);
+            await _productoRepository.AddAsync(producto);
+            return _mapper.Map<ProductoDto>(producto);
         }
     }
 } 

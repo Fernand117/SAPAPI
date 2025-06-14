@@ -7,5 +7,6 @@ namespace SAP.Application.Features.Productos.Queries.GetProductosByCategoria
     public class GetProductosByCategoriaQuery : IRequest<IEnumerable<ProductoDto>>
     {
         public int CategoriaId { get; set; }
+        public bool SoloActivos { get; set; } = true;
     }
 } 

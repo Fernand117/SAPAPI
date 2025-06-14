@@ -8,12 +8,12 @@ namespace SAP.Application.DTOs
         public required string Codigo { get; set; }
         public required string Nombre { get; set; }
         public string? Descripcion { get; set; }
-        public decimal PrecioVenta { get; set; }
-        public decimal PrecioCompra { get; set; }
-        public bool Activo { get; set; }
+        public string? Marca { get; set; }
         public int CategoriaId { get; set; }
         public string? CategoriaNombre { get; set; }
-        public ICollection<ProductoAtributoDto>? Atributos { get; set; }
+        public decimal Precio { get; set; }
+        public string? ImagenUrl { get; set; }
+        public bool Activo { get; set; }
     }
 
     public class CreateProductoDto
@@ -21,10 +21,11 @@ namespace SAP.Application.DTOs
         public required string Codigo { get; set; }
         public required string Nombre { get; set; }
         public string? Descripcion { get; set; }
-        public decimal PrecioVenta { get; set; }
-        public decimal PrecioCompra { get; set; }
+        public string? Marca { get; set; }
         public int CategoriaId { get; set; }
-        public ICollection<CreateProductoAtributoDto>? Atributos { get; set; }
+        public decimal Precio { get; set; }
+        public string? ImagenUrl { get; set; }
+        public bool Activo { get; set; }
     }
 
     public class UpdateProductoDto
@@ -33,11 +34,17 @@ namespace SAP.Application.DTOs
         public required string Codigo { get; set; }
         public required string Nombre { get; set; }
         public string? Descripcion { get; set; }
-        public decimal PrecioVenta { get; set; }
-        public decimal PrecioCompra { get; set; }
-        public bool Activo { get; set; }
+        public string? Marca { get; set; }
         public int CategoriaId { get; set; }
-        public ICollection<UpdateProductoAtributoDto>? Atributos { get; set; }
+        public decimal Precio { get; set; }
+        public string? ImagenUrl { get; set; }
+        public bool Activo { get; set; }
+    }
+
+    public class ProductoDetalleDto : ProductoDto
+    {
+        public ICollection<ProductoAtributoValorDto>? Atributos { get; set; }
+        public ICollection<InventarioDto>? Inventario { get; set; }
     }
 
     public class ProductoAtributoDto

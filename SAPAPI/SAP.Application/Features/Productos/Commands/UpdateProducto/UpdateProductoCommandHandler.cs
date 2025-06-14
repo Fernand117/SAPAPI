@@ -1,8 +1,10 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using SAP.Application.DTOs;
+using SAP.Domain.Entities;
 using SAP.Domain.Interfaces;
 
 namespace SAP.Application.Features.Productos.Commands.UpdateProducto
@@ -24,30 +26,16 @@ namespace SAP.Application.Features.Productos.Commands.UpdateProducto
         {
             var producto = await _productoRepository.GetByIdAsync(request.Producto.ProductoId);
             if (producto == null)
-                return null;
+                throw new Exception("Producto no encontrado");
 
             producto.Codigo = request.Producto.Codigo;
             producto.Nombre = request.Producto.Nombre;
-            producto.Descripcion = request.Producto.Descripcion;
-            producto.PrecioVenta = request.Producto.PrecioVenta;
-            producto.PrecioCompra = request.Producto.PrecioCompra;
-            producto.Activo = request.Producto.Activo;
+            producto.Descripcion = request.Producto.Descripcion ?? producto.Descripcion;
             producto.CategoriaId = request.Producto.CategoriaId;
+            producto.PrecioVenta = request.Producto.Precio;
+            producto.Activo = request.Producto.Activo;
 
             await _productoRepository.UpdateAsync(producto);
-
-            // Actualizar atributos si existen
-            if (request.Producto.Atributos != null)
-            {
-                foreach (var atributoDto in request.Producto.Atributos)
-                {
-                    await _productoRepository.UpdateAtributoAsync(
-                        request.Producto.ProductoId,
-                        atributoDto.AtributoId,
-                        atributoDto.Valor);
-                }
-            }
-
             return _mapper.Map<ProductoDto>(producto);
         }
     }

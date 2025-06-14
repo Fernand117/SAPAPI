@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using SAP.Application.DTOs;
+using SAP.Domain.Entities;
 using SAP.Domain.Interfaces;
 
 namespace SAP.Application.Features.Categorias.Commands.UpdateCategoria
@@ -22,11 +23,10 @@ namespace SAP.Application.Features.Categorias.Commands.UpdateCategoria
         {
             var categoria = await _categoriaRepository.GetByIdAsync(request.Categoria.CategoriaId);
             if (categoria == null)
-                return null;
+                throw new Exception("Categoría no encontrada");
 
             categoria.Nombre = request.Categoria.Nombre;
             categoria.Descripcion = request.Categoria.Descripcion;
-            categoria.Activa = request.Categoria.Activa;
 
             await _categoriaRepository.UpdateAsync(categoria);
             return _mapper.Map<CategoriaDto>(categoria);
