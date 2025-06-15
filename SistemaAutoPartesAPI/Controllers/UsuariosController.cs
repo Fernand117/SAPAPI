@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaAutoPartesAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using SistemaAutoPartesAPI.Models;
 using SistemaAutoPartesAPI.Models.DTOs;
+using SistemaAutoPartesAPI.Utils;
 
 namespace SistemaAutoPartesAPI.Controllers
 {
@@ -59,20 +62,72 @@ namespace SistemaAutoPartesAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<UsuarioDTO>> PostUsuario(UsuarioDTO usuarioDTO)
         {
+            // Generar una contraseña por defecto y hashearla
+            var defaultPassword = Guid.NewGuid().ToString().Substring(0, 8); // Contraseña aleatoria de 8 caracteres
+            var passwordHash = PasswordHasher.HashPassword(defaultPassword);
+
             var usuario = new Usuario
             {
                 EmpleadoId = usuarioDTO.EmpleadoId,
                 Username = usuarioDTO.Username,
-                // PasswordHash should be handled securely, not directly from DTO
+                PasswordHash = passwordHash, // Guardar el hash de la contraseña
                 Activo = usuarioDTO.Activo
             };
 
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
 
-            usuarioDTO.UsuarioId = usuario.UsuarioId; // Update DTO with generated ID
+            usuarioDTO.UsuarioId = usuario.UsuarioId; // Actualizar DTO con el ID generado
+
+            // Opcional: Devolver la contraseña por defecto para que el usuario la conozca y la cambie
+            // En un entorno real, esto se enviaría por correo electrónico o un canal seguro.
+            // Por simplicidad, aquí solo se devuelve en la respuesta (NO RECOMENDADO EN PRODUCCIÓN).
+            // usuarioDTO.PasswordHash = defaultPassword; // No se debe exponer el hash ni la contraseña en el DTO
 
             return CreatedAtAction("GetUsuario", new { id = usuario.UsuarioId }, usuarioDTO);
+        }
+
+        // POST: api/Usuarios/login
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> Login(LoginRequest request)
+        {
+            var usuario = await _context.Usuarios.SingleOrDefaultAsync(u => u.Username == request.Username);
+
+            if (usuario == null || !PasswordHasher.VerifyPassword(request.Password, usuario.PasswordHash))
+            {
+                return Unauthorized("Credenciales inválidas.");
+            }
+
+            // En un escenario real, aquí se generaría un token JWT
+            return Ok("Login exitoso. En un entorno real, aquí iría un token JWT.");
+        }
+
+        // PUT: api/Usuarios/change-password
+        [HttpPut("change-password")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
+        {
+            var usuario = await _context.Usuarios.SingleOrDefaultAsync(u => u.Username == request.Username);
+
+            if (usuario == null || !PasswordHasher.VerifyPassword(request.OldPassword, usuario.PasswordHash))
+            {
+                return Unauthorized("Credenciales inválidas o contraseña antigua incorrecta.");
+            }
+
+            // Actualizar la contraseña
+            usuario.PasswordHash = PasswordHasher.HashPassword(request.NewPassword);
+            _context.Entry(usuario).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                // Esto podría ocurrir si el usuario se elimina o modifica concurrentemente
+                return NotFound();
+            }
+
+            return NoContent();
         }
 
         // PUT: api/Usuarios/5

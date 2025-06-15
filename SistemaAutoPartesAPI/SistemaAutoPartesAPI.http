@@ -1,6 +1,857 @@
 @SistemaAutoPartesAPI_HostAddress = http://localhost:5294
 
-GET {{SistemaAutoPartesAPI_HostAddress}}/weatherforecast/
+### WeatherForecast
+GET {{SistemaAutoPartesAPI_HostAddress}}/WeatherForecast
+Accept: application/json
+
+### Asistencias
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Asistencias
 Accept: application/json
 
 ###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Asistencias/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Asistencias
+Content-Type: application/json
+
+{
+  "empleadoId": 1,
+  "fecha": "2023-10-26T00:00:00Z",
+  "horaEntrada": "08:00:00",
+  "horaSalida": "17:00:00",
+  "observaciones": ""
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Asistencias/1
+Content-Type: application/json
+
+{
+  "asistenciaId": 1,
+  "empleadoId": 1,
+  "fecha": "2023-10-26T00:00:00Z",
+  "horaEntrada": "08:00:00",
+  "horaSalida": "17:00:00",
+  "observaciones": "Updated"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Asistencias/1
+Accept: application/json
+
+### AtributosProductos
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/AtributosProductos
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/AtributosProductos/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/AtributosProductos
+Content-Type: application/json
+
+{
+  "nombre": "Color",
+  "tipoDato": "string",
+  "categoriaId": 1
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/AtributosProductos/1
+Content-Type: application/json
+
+{
+  "atributoId": 1,
+  "nombre": "Color",
+  "tipoDato": "string",
+  "categoriaId": 1
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/AtributosProductos/1
+Accept: application/json
+
+### Bitacoras
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Bitacoras
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Bitacoras/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Bitacoras
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "sucursalId": 1,
+  "accion": "Login",
+  "tabla": "Usuarios",
+  "registroId": 1,
+  "detalles": "User logged in",
+  "ip": "127.0.0.1"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Bitacoras/1
+Content-Type: application/json
+
+{
+  "bitacoraId": 1,
+  "usuarioId": 1,
+  "sucursalId": 1,
+  "accion": "Login",
+  "tabla": "Usuarios",
+  "registroId": 1,
+  "detalles": "User logged in",
+  "ip": "127.0.0.1"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Bitacoras/1
+Accept: application/json
+
+### CategoriasProductos
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/CategoriasProductos
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/CategoriasProductos/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/CategoriasProductos
+Content-Type: application/json
+
+{
+  "nombre": "Electrónica",
+  "descripcion": "Componentes electrónicos",
+  "categoriaPadreId": null
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/CategoriasProductos/1
+Content-Type: application/json
+
+{
+  "categoriaId": 1,
+  "nombre": "Electrónica",
+  "descripcion": "Componentes electrónicos",
+  "categoriaPadreId": null
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/CategoriasProductos/1
+Accept: application/json
+
+### Clientes
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Clientes
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Clientes/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Clientes
+Content-Type: application/json
+
+{
+  "nombre": "Juan Perez",
+  "rfc": "PEXJ800101ABC",
+  "direccion": "Calle Falsa 123",
+  "telefono": "5512345678",
+  "email": "juan.perez@example.com",
+  "sucursalId": 1
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Clientes/1
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "nombre": "Juan Perez",
+  "rfc": "PEXJ800101ABC",
+  "direccion": "Calle Falsa 123",
+  "telefono": "5512345678",
+  "email": "juan.perez@example.com",
+  "sucursalId": 1
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Clientes/1
+Accept: application/json
+
+### DetalleVentas
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/DetalleVentas
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/DetalleVentas/1/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/DetalleVentas
+Content-Type: application/json
+
+{
+  "ventaId": 1,
+  "productoId": 1,
+  "cantidad": 2,
+  "precioUnitario": 10.50,
+  "subtotal": 21.00
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/DetalleVentas/1/1
+Content-Type: application/json
+
+{
+  "detalleId": 1,
+  "ventaId": 1,
+  "productoId": 1,
+  "cantidad": 3,
+  "precioUnitario": 10.50,
+  "subtotal": 31.50
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/DetalleVentas/1/1
+Accept: application/json
+
+### Empleados
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Empleados
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Empleados/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Empleados
+Content-Type: application/json
+
+{
+  "nombre": "Maria",
+  "apellidoPaterno": "Gomez",
+  "apellidoMaterno": "Lopez",
+  "fechaNacimiento": "1990-05-15T00:00:00Z",
+  "genero": "F",
+  "curp": "GOLM900515HDFRGN01",
+  "rfc": "GOLM900515ABC",
+  "nss": "12345678901",
+  "direccion": "Av. Siempre Viva 742",
+  "telefono": "5598765432",
+  "email": "maria.gomez@example.com",
+  "fechaIngreso": "2020-01-01T00:00:00Z",
+  "activo": true,
+  "sucursalId": 1,
+  "fotoUrl": ""
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Empleados/1
+Content-Type: application/json
+
+{
+  "empleadoId": 1,
+  "nombre": "Maria",
+  "apellidoPaterno": "Gomez",
+  "apellidoMaterno": "Lopez",
+  "fechaNacimiento": "1990-05-15T00:00:00Z",
+  "genero": "F",
+  "curp": "GOLM900515HDFRGN01",
+  "rfc": "GOLM900515ABC",
+  "nss": "12345678901",
+  "direccion": "Av. Siempre Viva 742",
+  "telefono": "5598765432",
+  "email": "maria.gomez@example.com",
+  "fechaIngreso": "2020-01-01T00:00:00Z",
+  "activo": true,
+  "sucursalId": 1,
+  "fotoUrl": ""
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Empleados/1
+Accept: application/json
+
+### Incidencias
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Incidencias
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Incidencias/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Incidencias
+Content-Type: application/json
+
+{
+  "empleadoId": 1,
+  "fecha": "2023-10-26T00:00:00Z",
+  "tipo": "Retardo",
+  "descripcion": "Llegada tarde",
+  "justificada": false
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Incidencias/1
+Content-Type: application/json
+
+{
+  "incidenciaId": 1,
+  "empleadoId": 1,
+  "fecha": "2023-10-26T00:00:00Z",
+  "tipo": "Retardo",
+  "descripcion": "Llegada tarde",
+  "justificada": true
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Incidencias/1
+Accept: application/json
+
+### Inventarios
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Inventarios
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Inventarios/1/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Inventarios
+Content-Type: application/json
+
+{
+  "productoId": 1,
+  "sucursalId": 1,
+  "cantidad": 100
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Inventarios/1/1
+Content-Type: application/json
+
+{
+  "inventarioId": 1,
+  "productoId": 1,
+  "sucursalId": 1,
+  "cantidad": 90
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Inventarios/1/1
+Accept: application/json
+
+### InventarioVendedores
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/InventarioVendedores
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/InventarioVendedores/1/1/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/InventarioVendedores
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "productoId": 1,
+  "sucursalId": 1,
+  "cantidad": 50
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/InventarioVendedores/1/1/1
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "productoId": 1,
+  "sucursalId": 1,
+  "cantidad": 45
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/InventarioVendedores/1/1/1
+Accept: application/json
+
+### MovimientosInventarios
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/MovimientosInventarios
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/MovimientosInventarios/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/MovimientosInventarios
+Content-Type: application/json
+
+{
+  "productoId": 1,
+  "sucursalId": 1,
+  "fechaHora": "2023-10-26T10:00:00Z",
+  "tipoMovimiento": "Entrada",
+  "cantidad": 10,
+  "referenciaId": 1,
+  "origen": "Compra",
+  "usuarioId": 1,
+  "notas": ""
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/MovimientosInventarios/1
+Content-Type: application/json
+
+{
+  "movimientoId": 1,
+  "productoId": 1,
+  "sucursalId": 1,
+  "fechaHora": "2023-10-26T10:00:00Z",
+  "tipoMovimiento": "Entrada",
+  "cantidad": 10,
+  "referenciaId": 1,
+  "origen": "Compra",
+  "usuarioId": 1,
+  "notas": ""
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/MovimientosInventarios/1
+Accept: application/json
+
+### Nominas
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Nominas
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Nominas/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Nominas
+Content-Type: application/json
+
+{
+  "empleadoId": 1,
+  "fechaInicio": "2023-10-01T00:00:00Z",
+  "fechaFin": "2023-10-15T00:00:00Z",
+  "sueldoBase": 1000.00,
+  "bonos": 50.00,
+  "deducciones": 20.00,
+  "totalPagar": 1030.00,
+  "fechaPago": "2023-10-15T00:00:00Z",
+  "estado": "Pagada"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Nominas/1
+Content-Type: application/json
+
+{
+  "nominaId": 1,
+  "empleadoId": 1,
+  "fechaInicio": "2023-10-01T00:00:00Z",
+  "fechaFin": "2023-10-15T00:00:00Z",
+  "sueldoBase": 1000.00,
+  "bonos": 50.00,
+  "deducciones": 20.00,
+  "totalPagar": 1030.00,
+  "fechaPago": "2023-10-15T00:00:00Z",
+  "estado": "Pagada"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Nominas/1
+Accept: application/json
+
+### Permisos
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Permisos
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Permisos/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Permisos
+Content-Type: application/json
+
+{
+  "nombre": "ReadUsers",
+  "modulo": "Usuarios",
+  "descripcion": "Permite leer usuarios"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Permisos/1
+Content-Type: application/json
+
+{
+  "permisoId": 1,
+  "nombre": "ReadUsers",
+  "modulo": "Usuarios",
+  "descripcion": "Permite leer usuarios"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Permisos/1
+Accept: application/json
+
+### PermisosSalida
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/PermisosSalida
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/PermisosSalida/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/PermisosSalida
+Content-Type: application/json
+
+{
+  "empleadoId": 1,
+  "fechaSolicitud": "2023-10-26T00:00:00Z",
+  "fechaSalida": "2023-10-26T00:00:00Z",
+  "horaSalida": "10:00:00",
+  "horaRegreso": "12:00:00",
+  "motivo": "Cita médica",
+  "autorizado": false
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/PermisosSalida/1
+Content-Type: application/json
+
+{
+  "permisoSalidaId": 1,
+  "empleadoId": 1,
+  "fechaSolicitud": "2023-10-26T00:00:00Z",
+  "fechaSalida": "2023-10-26T00:00:00Z",
+  "horaSalida": "10:00:00",
+  "horaRegreso": "12:00:00",
+  "motivo": "Cita médica",
+  "autorizado": true
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/PermisosSalida/1
+Accept: application/json
+
+### ProductoAtributoValors
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/ProductoAtributoValors
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/ProductoAtributoValors/1/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/ProductoAtributoValors
+Content-Type: application/json
+
+{
+  "productoId": 1,
+  "atributoId": 1,
+  "valor": "Rojo"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/ProductoAtributoValors/1/1
+Content-Type: application/json
+
+{
+  "productoId": 1,
+  "atributoId": 1,
+  "valor": "Azul"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/ProductoAtributoValors/1/1
+Accept: application/json
+
+### Productos
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Productos
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Productos/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Productos
+Content-Type: application/json
+
+{
+  "codigo": "PROD001",
+  "nombre": "Filtro de Aire",
+  "descripcion": "Filtro de aire para motor",
+  "marca": "Bosch",
+  "categoriaId": 1,
+  "precio": 25.99,
+  "imagenUrl": "",
+  "activo": true
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Productos/1
+Content-Type: application/json
+
+{
+  "productoId": 1,
+  "codigo": "PROD001",
+  "nombre": "Filtro de Aire",
+  "descripcion": "Filtro de aire para motor",
+  "marca": "Bosch",
+  "categoriaId": 1,
+  "precio": 25.99,
+  "imagenUrl": "",
+  "activo": true
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Productos/1
+Accept: application/json
+
+### Roles
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Roles
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Roles/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Roles
+Content-Type: application/json
+
+{
+  "nombre": "Administrador",
+  "descripcion": "Rol con todos los permisos"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Roles/1
+Content-Type: application/json
+
+{
+  "rolId": 1,
+  "nombre": "Administrador",
+  "descripcion": "Rol con todos los permisos"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Roles/1
+Accept: application/json
+
+### Sucursales
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Sucursales
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Sucursales/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Sucursales
+Content-Type: application/json
+
+{
+  "nombre": "Sucursal Principal",
+  "direccion": "Calle Central 100",
+  "ciudad": "Ciudad de México",
+  "estado": "CDMX",
+  "telefono": "5511223344"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Sucursales/1
+Content-Type: application/json
+
+{
+  "sucursalId": 1,
+  "nombre": "Sucursal Principal",
+  "direccion": "Calle Central 100",
+  "ciudad": "Ciudad de México",
+  "estado": "CDMX",
+  "telefono": "5511223344"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Sucursales/1
+Accept: application/json
+
+### UnidadesMoviles
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/UnidadesMoviles
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/UnidadesMoviles/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/UnidadesMoviles
+Content-Type: application/json
+
+{
+  "sucursalId": 1,
+  "tipo": "Camioneta",
+  "marca": "Nissan",
+  "modelo": "Frontier",
+  "placa": "ABC-123",
+  "activa": true
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/UnidadesMoviles/1
+Content-Type: application/json
+
+{
+  "unidadId": 1,
+  "sucursalId": 1,
+  "tipo": "Camioneta",
+  "marca": "Nissan",
+  "modelo": "Frontier",
+  "placa": "ABC-123",
+  "activa": true
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/UnidadesMoviles/1
+Accept: application/json
+
+### UsuarioUnidades
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/UsuarioUnidades
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/UsuarioUnidades/1/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/UsuarioUnidades
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "unidadId": 1,
+  "sucursalId": 1,
+  "fechaAsignacion": "2023-10-26T00:00:00Z"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/UsuarioUnidades/1/1
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "unidadId": 1,
+  "sucursalId": 1,
+  "fechaAsignacion": "2023-10-26T00:00:00Z"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/UsuarioUnidades/1/1
+Accept: application/json
+
+### Usuarios
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios
+Content-Type: application/json
+
+{
+  "empleadoId": 1,
+  "username": "testuser",
+  "activo": true
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios/1
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "empleadoId": 1,
+  "username": "testuser",
+  "activo": true
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios/1
+Accept: application/json
+
+### Login Usuario
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "password123"
+}
+
+### Change Password Usuario
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Usuarios/change-password
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "oldPassword": "password123",
+  "newPassword": "newpassword456"
+}
+
+### Ventas
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Ventas
+Accept: application/json
+
+###
+GET {{SistemaAutoPartesAPI_HostAddress}}/api/Ventas/1
+Accept: application/json
+
+###
+POST {{SistemaAutoPartesAPI_HostAddress}}/api/Ventas
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "usuarioId": 1,
+  "sucursalId": 1,
+  "fechaVenta": "2023-10-26T00:00:00Z",
+  "total": 100.00,
+  "estado": "Completada"
+}
+
+###
+PUT {{SistemaAutoPartesAPI_HostAddress}}/api/Ventas/1
+Content-Type: application/json
+
+{
+  "ventaId": 1,
+  "clienteId": 1,
+  "usuarioId": 1,
+  "sucursalId": 1,
+  "fechaVenta": "2023-10-26T00:00:00Z",
+  "total": 100.00,
+  "estado": "Completada"
+}
+
+###
+DELETE {{SistemaAutoPartesAPI_HostAddress}}/api/Ventas/1
+Accept: application/json
