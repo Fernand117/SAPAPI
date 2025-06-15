@@ -89,7 +89,7 @@ namespace SistemaAutoPartesAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(LoginRequest request)
         {
-            var usuario = await _context.Usuarios.SingleOrDefaultAsync(u => u.Username == request.Username);
+            var usuario = await _context.Usuarios.SingleOrDefaultAsync(u => u.Username == request.Username && u.PasswordHash == request.Password);
 
             if (usuario == null || !PasswordHasher.VerifyPassword(request.Password, usuario.PasswordHash))
             {
