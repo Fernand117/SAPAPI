@@ -19,7 +19,6 @@ namespace SAP.Domain.Entities
         public int SucursalId { get; set; }
 
         // Relaciones
-        public Usuario Usuario { get; set; }
         public Sucursal Sucursal { get; set; }
         public ICollection<Asistencia> Asistencias { get; set; }
         public ICollection<Incidencia> Incidencias { get; set; }

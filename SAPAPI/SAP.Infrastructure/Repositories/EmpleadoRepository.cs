@@ -18,7 +18,6 @@ namespace SAP.Infrastructure.Repositories
         public async Task<Empleado> GetEmpleadoWithUsuarioAsync(int empleadoId)
         {
             return await _dbSet
-                .Include(e => e.Usuario)
                 .Include(e => e.Sucursal)
                 .FirstOrDefaultAsync(e => e.EmpleadoId == empleadoId);
         }
@@ -26,7 +25,6 @@ namespace SAP.Infrastructure.Repositories
         public async Task<IEnumerable<Empleado>> GetEmpleadosBySucursalAsync(int sucursalId)
         {
             return await _dbSet
-                .Include(e => e.Usuario)
                 .Where(e => e.SucursalId == sucursalId)
                 .ToListAsync();
         }

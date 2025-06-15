@@ -20,21 +20,24 @@ namespace SAP.Infrastructure.Data
         public DbSet<Sucursal> Sucursales { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Venta> Ventas { get; set; }
+        public DbSet<RolPermiso> RolPermisos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configuración de Asistencia
-            modelBuilder.Entity<Asistencia>(entity =>
+            modelBuilder.Entity<RolPermiso>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Estado).IsRequired();
-                entity.HasOne(e => e.Empleado)
-                    .WithMany()
-                    .HasForeignKey(e => e.EmpleadoId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasNoKey();
+                
+                entity.HasOne(rp => rp.Rol)
+                      .WithMany(r => r.RolPermisos)
+                      .HasForeignKey(rp => rp.RolId);
+
+                entity.HasOne(rp => rp.Permiso)
+                      .WithMany(p => p.RolPermisos)
+                      .HasForeignKey(rp => rp.PermisoId);
             });
         }
     }
-} 
+}
