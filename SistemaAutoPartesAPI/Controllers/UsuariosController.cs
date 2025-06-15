@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaAutoPartesAPI.Models;
-using Microsoft.EntityFrameworkCore;
-using SistemaAutoPartesAPI.Models;
 using SistemaAutoPartesAPI.Models.DTOs;
 using SistemaAutoPartesAPI.Utils;
 
