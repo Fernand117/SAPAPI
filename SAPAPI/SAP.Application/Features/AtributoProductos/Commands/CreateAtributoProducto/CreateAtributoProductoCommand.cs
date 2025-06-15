@@ -30,7 +30,7 @@ public class CreateAtributoProductoCommandHandler : IRequestHandler<CreateAtribu
         };
 
         await _unitOfWork.Repository<Domain.Entities.AtributoProducto>().AddAsync(atributoProducto);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -39,4 +39,4 @@ public class CreateAtributoProductoCommandHandler : IRequestHandler<CreateAtribu
             Message = "AtributoProducto creado exitosamente"
         };
     }
-} 
+}

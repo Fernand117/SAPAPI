@@ -43,7 +43,7 @@ public class UpdateDetalleVentaCommandHandler : IRequestHandler<UpdateDetalleVen
         detalleVenta.Subtotal = request.Subtotal;
 
         await _unitOfWork.Repository<Domain.Entities.DetalleVenta>().UpdateAsync(detalleVenta);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -52,4 +52,4 @@ public class UpdateDetalleVentaCommandHandler : IRequestHandler<UpdateDetalleVen
             Message = "DetalleVenta actualizado exitosamente"
         };
     }
-} 
+}

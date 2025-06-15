@@ -34,7 +34,7 @@ public class CreatePermisoSalidaCommandHandler : IRequestHandler<CreatePermisoSa
         };
 
         await _unitOfWork.Repository<Domain.Entities.PermisoSalida>().AddAsync(permisoSalida);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -43,4 +43,4 @@ public class CreatePermisoSalidaCommandHandler : IRequestHandler<CreatePermisoSa
             Message = "PermisoSalida creado exitosamente"
         };
     }
-} 
+}

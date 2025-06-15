@@ -39,7 +39,7 @@ public class UpdateInventarioVendedorCommandHandler : IRequestHandler<UpdateInve
         inventarioVendedor.Cantidad = request.Cantidad;
 
         await _unitOfWork.Repository<Domain.Entities.InventarioVendedor>().UpdateAsync(inventarioVendedor);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -48,4 +48,4 @@ public class UpdateInventarioVendedorCommandHandler : IRequestHandler<UpdateInve
             Message = "InventarioVendedor actualizado exitosamente"
         };
     }
-} 
+}

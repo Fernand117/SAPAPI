@@ -47,7 +47,7 @@ public class UpdateNominaCommandHandler : IRequestHandler<UpdateNominaCommand, R
         nomina.Total = request.Total;
 
         await _unitOfWork.Repository<Domain.Entities.Nomina>().UpdateAsync(nomina);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -56,4 +56,4 @@ public class UpdateNominaCommandHandler : IRequestHandler<UpdateNominaCommand, R
             Message = "Nomina actualizada exitosamente"
         };
     }
-} 
+}

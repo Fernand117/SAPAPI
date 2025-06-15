@@ -30,7 +30,7 @@ public class CreateInventarioVendedorCommandHandler : IRequestHandler<CreateInve
         };
 
         await _unitOfWork.Repository<Domain.Entities.InventarioVendedor>().AddAsync(inventarioVendedor);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -39,4 +39,4 @@ public class CreateInventarioVendedorCommandHandler : IRequestHandler<CreateInve
             Message = "InventarioVendedor creado exitosamente"
         };
     }
-} 
+}

@@ -38,7 +38,7 @@ public class CreateNominaCommandHandler : IRequestHandler<CreateNominaCommand, R
         };
 
         await _unitOfWork.Repository<Domain.Entities.Nomina>().AddAsync(nomina);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -47,4 +47,4 @@ public class CreateNominaCommandHandler : IRequestHandler<CreateNominaCommand, R
             Message = "Nomina creada exitosamente"
         };
     }
-} 
+}

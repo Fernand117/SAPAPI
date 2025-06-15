@@ -34,7 +34,7 @@ public class CreateDetalleVentaCommandHandler : IRequestHandler<CreateDetalleVen
         };
 
         await _unitOfWork.Repository<Domain.Entities.DetalleVenta>().AddAsync(detalleVenta);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -43,4 +43,4 @@ public class CreateDetalleVentaCommandHandler : IRequestHandler<CreateDetalleVen
             Message = "DetalleVenta creado exitosamente"
         };
     }
-} 
+}

@@ -39,7 +39,7 @@ public class UpdateAtributoProductoCommandHandler : IRequestHandler<UpdateAtribu
         atributoProducto.Valor = request.Valor;
 
         await _unitOfWork.Repository<Domain.Entities.AtributoProducto>().UpdateAsync(atributoProducto);
-        await _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new Response<int>
         {
@@ -48,4 +48,4 @@ public class UpdateAtributoProductoCommandHandler : IRequestHandler<UpdateAtribu
             Message = "AtributoProducto actualizado exitosamente"
         };
     }
-} 
+}
