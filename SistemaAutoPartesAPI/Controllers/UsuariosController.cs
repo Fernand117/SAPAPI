@@ -87,7 +87,7 @@ namespace SistemaAutoPartesAPI.Controllers
 
         // POST: api/Usuarios/login
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
             var usuario = await _context.Usuarios.SingleOrDefaultAsync(u => u.Username == request.Username && u.PasswordHash == request.Password);
 
@@ -97,7 +97,7 @@ namespace SistemaAutoPartesAPI.Controllers
             }
 
             // En un escenario real, aquí se generaría un token JWT
-            return Ok("Login exitoso. En un entorno real, aquí iría un token JWT.");
+            return Ok(new ApiResponse(200, "Usuario autentificado", usuario));
         }
 
         // PUT: api/Usuarios/change-password
@@ -118,14 +118,13 @@ namespace SistemaAutoPartesAPI.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                return Ok(new ApiResponse(200, "Contraseña actualizada correctamente.", usuario));
             }
             catch (DbUpdateConcurrencyException)
             {
                 // Esto podría ocurrir si el usuario se elimina o modifica concurrentemente
-                return NotFound();
+                return NotFound(new ApiResponse(404, "No se encontró al usuario"));
             }
-
-            return NoContent();
         }
 
         // PUT: api/Usuarios/5
