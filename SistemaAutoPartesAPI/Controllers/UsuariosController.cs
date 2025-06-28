@@ -31,7 +31,7 @@ namespace SistemaAutoPartesAPI.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(usuarios);
+            return Ok(new ApiResponse(200, "Lista de usuarios", usuarios));
         }
 
         // GET: api/Usuarios/5
@@ -53,7 +53,7 @@ namespace SistemaAutoPartesAPI.Controllers
                 Activo = usuario.Activo
             };
 
-            return Ok(usuarioDTO);
+            return Ok(new ApiResponse(200, "Usuario", usuarioDTO));
         }
 
         // POST: api/Usuarios
@@ -91,9 +91,9 @@ namespace SistemaAutoPartesAPI.Controllers
         {
             var usuario = await _context.Usuarios.SingleOrDefaultAsync(u => u.Username == request.Username && u.PasswordHash == request.Password);
 
-            if (usuario == null || !PasswordHasher.VerifyPassword(request.Password, usuario.PasswordHash))
+            if (usuario == null)
             {
-                return Unauthorized("Credenciales inválidas.");
+                return Unauthorized(new ApiResponse(404, "Usuario o contraseña incorrectos"));
             }
 
             // En un escenario real, aquí se generaría un token JWT

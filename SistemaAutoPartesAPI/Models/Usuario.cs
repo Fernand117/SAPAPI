@@ -14,6 +14,7 @@ public partial class Usuario
     public string PasswordHash { get; set; } = null!;
 
     public bool Activo { get; set; }
+    public int[] RolId { get; set; }
 
     public virtual ICollection<Bitacora> Bitacoras { get; set; } = new List<Bitacora>();
 
