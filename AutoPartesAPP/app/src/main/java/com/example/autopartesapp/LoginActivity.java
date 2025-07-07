@@ -1,5 +1,6 @@
 package com.example.autopartesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -53,6 +54,10 @@ public class LoginActivity extends AppCompatActivity {
                     txtPassword.requestFocus();
                     return;
                 }
+
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
