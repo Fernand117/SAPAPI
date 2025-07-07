@@ -43,13 +43,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (txtUsuario.getEditText().getText().toString().isEmpty()) {
-                    generateToast.generateToast(LoginActivity.this, "El campo usuario es requerido");
+                    generateToast.generateToast(LoginActivity.this, "El campo usuario es requerido").show();
                     txtUsuario.requestFocus();
+                    return;
                 }
 
                 if (txtPassword.getEditText().getText().toString().isEmpty()) {
-                    generateToast.generateToast(LoginActivity.this, "El campo contraseña es requerido");
+                    generateToast.generateToast(LoginActivity.this, "El campo contraseña es requerido").show();
                     txtPassword.requestFocus();
+                    return;
                 }
             }
         });
