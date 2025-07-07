@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SistemaAutoPartesAPI.Models;
 
@@ -11,7 +12,8 @@ public partial class MovimientosInventario
 
     public int SucursalId { get; set; }
 
-    public DateTime FechaHora { get; set; }
+    [Column(TypeName = "timestamp")]
+    public DateTime FechaHora { get; set; } = DateTime.Now;
 
     public string TipoMovimiento { get; set; } = null!;
 

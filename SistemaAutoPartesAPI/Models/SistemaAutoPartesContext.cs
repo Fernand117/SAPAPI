@@ -105,8 +105,7 @@ public partial class SistemaAutoPartesContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.FechaHora)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasColumnType("timestamp");
             entity.Property(e => e.Ip)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -302,8 +301,7 @@ public partial class SistemaAutoPartesContext : DbContext
             entity.ToTable("MovimientosInventario");
 
             entity.Property(e => e.FechaHora)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasColumnType("timestamp");
             entity.Property(e => e.Notas)
                 .HasMaxLength(200)
                 .IsUnicode(false);
@@ -559,8 +557,7 @@ public partial class SistemaAutoPartesContext : DbContext
             entity.HasKey(e => e.VentaId).HasName("PK__Ventas__5B4150ACAEEDFE50");
 
             entity.Property(e => e.Fecha)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                .HasColumnType("timestamp");
             entity.Property(e => e.FirmaUrl)
                 .HasMaxLength(200)
                 .IsUnicode(false);
